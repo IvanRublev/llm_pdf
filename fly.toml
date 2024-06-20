@@ -1,0 +1,48 @@
+# fly.toml app configuration file generated for llm-pdf on 2024-06-21T08:48:12+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'llm-pdf'
+primary_region = 'ams'
+kill_signal = 'SIGTERM'
+kill_timeout = '5s'
+
+[experimental]
+  auto_rollback = true
+
+[build]
+
+[deploy]
+  strategy = 'rolling'
+  wait_timeout = '10m0s'
+
+[env]
+  ELASTIC_URL = 'http://llm-pdf-elastic.internal:9200'
+  HOST = 'llm-pdf.fly.dev'
+  STREAMLIT_SERVER_PORT = '8080'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ['app']
+
+  [http_service.concurrency]
+    type = 'connections'
+    hard_limit = 1000
+    soft_limit = 1000
+
+  [[http_service.checks]]
+    interval = '30s'
+    timeout = '5s'
+    grace_period = '10s'
+    method = 'GET'
+    path = '/'
+
+[[vm]]
+  memory = '1024mb'
+  cpu_kind = 'shared'
+  cpus = 1

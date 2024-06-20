@@ -1,0 +1,37 @@
+# Ignore Python cache files
+**/__pycache__
+
+# Ignore pytest cache files
+.pytest_cache/
+
+# Ignore ruff files
+.ruff_cache/
+
+# Ignore git files
+.gitignore
+.github/
+
+# Ignore Dockerfile and .dockerignore
+Dockerfile
+.dockerignore
+
+# Ignore other unnecessary files
+*.pyc
+*.pyo
+*.pyd
+*~
+
+# Ignore makefile
+Makefile
+
+# Environment variables
+.envrc
+
+# Fly.io
+fly.toml
+
+# Elastic container config
+elastic/
+
+# temporary data
+tmp/

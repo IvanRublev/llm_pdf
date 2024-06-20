@@ -1,0 +1,4 @@
+export STREAMLIT_SERVER_PORT=8000
+export ELASTIC_URL='http://elacticserver:9200'
+export OPENAI_API_KEY='<<apikey here>>'
+export STREAMLIT_SERVER_COOKIE_SECRET='<<uuid here>>'
