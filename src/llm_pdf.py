@@ -95,8 +95,13 @@ def llm_pdf_app():
 
     _remove_chunks_from_elastic_on_exit()
     uploaded_file = st.sidebar.file_uploader(
-        "Uploaded content, questions, and answers will be deleted when the page closes.", accept_multiple_files=False
+        "",
+        accept_multiple_files=False,
     )
+    st.sidebar.caption("""
+                       We don't store your content, but process it with OpenAI services. Uploaded PDF, questions,
+                       and answers will be deleted from our machine when the page is closed.
+                       """)
 
     st.sidebar.markdown("""
                         # About the app
